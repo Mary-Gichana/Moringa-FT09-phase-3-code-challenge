@@ -47,16 +47,7 @@ class Author:
             return Author(author_row['id'], author_row['name'])
         return None
 
-    def update_name(self, new_name):
-        self.name = new_name
-        conn = get_db_connection()
-        cursor = conn.cursor()
-        cursor.execute('''
-            UPDATE Author SET name = ? WHERE id = ?
-        ''', (self.name, self.id))
-        conn.commit()
-        conn.close()
-
+    
     
     def delete_author(author_id):
         conn = get_db_connection()
